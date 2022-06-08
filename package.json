@@ -27,8 +27,9 @@
     "eject": "react-scripts eject"
   },
   "browserslist": [
-    "not dead",
+    "defaults",
     "not ie <= 11",
-    "not op_mini all"
+    "not op_mini all",
+    "not dead"
   ]
 }
