@@ -50,14 +50,22 @@ export default function App() {
       <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
       <Suspense fallback={null}>
         <Rig>
-          <Triangle color="#ff2060" scale={0.009} rotation={[0, 0, 0]} />
-          <Triangle color="cyan" scale={0.009} position={[2,0, -2]} rotation={[0, 0 , 0]} />
+        <mesh visible userData={{ test: "hello" }} 
+          position={[0, 1, -5]} castShadow>     
+          <sphereGeometry attach="geometry" args={[2, 16, 16]} />   
+          <meshStandardMaterial       
+           attach="material"        
+           color="orange"       
+           transparent        
+           roughness={0.2}       
+            metalness={0.8}      />    
+          </mesh>
           <Triangle color="orange" scale={0.009} position={[-2, 0, -2]} rotation={[0, 0, 0]} />
           <Triangle color="white" scale={0.009} position={[0, 2, -10]} rotation={[0, 0, 0]} />
           <Ground mirror={1} blur={[0, 2]} mixBlur={3} mixStrength={1.5} rotation={[-Math.PI / 2, 0, Math.PI / 2]} position-y={-1.75} />
         </Rig>
-        <EffectComposer multisampling={8}>
-          <Bloom kernelSize={.2} luminanceThreshold={0} luminanceSmoothing={0.5} intensity={0.02} />
+        <EffectComposer multisampling={16}>
+          <Bloom kernelSize={.1} luminanceThreshold={0} luminanceSmoothing={0.1} intensity={0.01} />
          </EffectComposer>
       </Suspense>
       <CameraShake maxYaw={.01} maxPitch={.01} maxRoll={.01} yawFrequency={0.01} pitchFrequency={0.11} rollFrequency={0.1} />
